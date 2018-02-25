@@ -10,7 +10,25 @@ const WHITE_1 = '#fff';
 
 export default class App extends React.Component {
 
+  constructor(...args) {
+    super(...args);
+    this.state = {loggedIn: false};
+  }
+
+  onSignUpPress() {
+    this.setState({loggedIn: true});
+  }
+
   render() {
+
+    if(this.state.loggedIn) {
+      return (
+        <View style={styles.container}>
+          <Text style={{marginTop: 200, fontSize: 20, color: BLUE_1}}>Logged In</Text>
+        </View>
+      )
+    }
+
     return (
       <View style={styles.container}>
         <View style={styles.partialBackground}></View>
@@ -32,7 +50,7 @@ export default class App extends React.Component {
         <Text></Text>
         <Text></Text>
         <Text></Text>
-        <TouchableOpacity style={styles.signUpButton}>
+        <TouchableOpacity style={styles.signUpButton} onPress={this.onSignUpPress.bind(this)}>
           <StyledText style={{color:WHITE_1, marginTop: 10}}>SIGN UP</StyledText>
         </TouchableOpacity>
       </View>
