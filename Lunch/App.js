@@ -1,5 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+
+
+const BLUE_1 = '#2799fb';//main darker font color
+const BLUE_2 = '#bce0fd';//light dot color
+const BLUE_3 = '#f1f9ff';//light background color
+const WHITE_1 = '#fff';
+
 
 export default class App extends React.Component {
 
@@ -16,11 +23,18 @@ export default class App extends React.Component {
         <Text></Text>
         <Text></Text>
         <Graphic/>
-        <Text>....</Text>
+        <Text style={{fontSize: 50, color: BLUE_2}}>
+          <Text style={{color: BLUE_1}}>.</Text>
+          <Text>.</Text>
+          <Text>.</Text>
+          <Text>.</Text>
+        </Text>
         <Text></Text>
         <Text></Text>
         <Text></Text>
-        <StyledText style={[styles.text]}>SIGN UP</StyledText>
+        <TouchableOpacity style={styles.signUpButton}>
+          <StyledText style={{color:WHITE_1, marginTop: 10}}>SIGN UP</StyledText>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -33,7 +47,7 @@ const StyledText = (props) => {
 
 const Graphic = () => {
   const style = {
-    backgroundColor: '#2799fb',
+    backgroundColor: BLUE_1,
     height: 100,
     width: 100
   }
@@ -53,15 +67,23 @@ const styles = StyleSheet.create({
     padding: 30
   },
   text: {
-    color: '#2799fb',
+    color: BLUE_1,
     textAlign: 'center'
   },
   partialBackground: {
-    backgroundColor: '#f1f9ff',
+    backgroundColor: BLUE_3,
     position: 'absolute',
     height: '60%',
     width: '200%',
   },
+  signUpButton: {
+    width: '100%',
+    height: 40,
+    backgroundColor: BLUE_1,
+    borderRadius: 3,
+    position: 'absolute',
+    bottom: 23
+  }
 });
 
 
