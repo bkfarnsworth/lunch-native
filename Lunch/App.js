@@ -7,23 +7,28 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.partialBackground}></View>
-        <Text style={[styles.welcomeMessage, styles.text]}>Welcome to</Text>
-        <Text style={[styles.text]}>Lunch</Text>
+        <StyledText style={{marginTop: '20%', fontSize: 30}}>Welcome to</StyledText>
+        <StyledText style={{fontSize: 30}}>Lunch</StyledText>
         <Text></Text>
         <Text></Text>
         <Text></Text>
-        <Text>Take the guesswork out of catching up over a bite to eat.</Text>
+        <StyledText>Take the guesswork out of catching up over a bite to eat.</StyledText>
         <Text></Text>
         <Text></Text>
-        <Text>Some graphic</Text>
+        <StyledText>Some graphic</StyledText>
         <Text>....</Text>
         <Text></Text>
         <Text></Text>
         <Text></Text>
-        <Text>SIGN UP</Text>
+        <StyledText style={[styles.text]}>SIGN UP</StyledText>
       </View>
     );
   }
+}
+
+const StyledText = (props) => {
+  let style = props.style;
+  return <Text {...props} style={[styles.text, style]}>{props.children}</Text>;
 }
 
 const styles = StyleSheet.create({
@@ -35,7 +40,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#2799fb',
-    fontSize: 30,
+    textAlign: 'center'
   },
   partialBackground: {
     backgroundColor: '#f1f9ff',
@@ -43,8 +48,10 @@ const styles = StyleSheet.create({
     height: '60%',
     width: '200%',
   },
-  welcomeMessage: {
-    marginTop: '20%'
-  },
-
 });
+
+
+
+
+
+
