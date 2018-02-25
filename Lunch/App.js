@@ -12,10 +12,10 @@ export default class App extends React.Component {
         <Text></Text>
         <Text></Text>
         <Text></Text>
-        <StyledText>Take the guesswork out of catching up over a bite to eat.</StyledText>
+        <StyledText>Take the guesswork out of catching up over a bite to eat</StyledText>
         <Text></Text>
         <Text></Text>
-        <StyledText>Some graphic</StyledText>
+        <Graphic/>
         <Text>....</Text>
         <Text></Text>
         <Text></Text>
@@ -29,6 +29,20 @@ export default class App extends React.Component {
 const StyledText = (props) => {
   let style = props.style;
   return <Text {...props} style={[styles.text, style]}>{props.children}</Text>;
+}
+
+const Graphic = () => {
+  const style = {
+    backgroundColor: '#2799fb',
+    height: 100,
+    width: 100
+  }
+
+  return (
+    <View style={style}>
+      <Text style={{color: 'white', fontSize: 10, paddingTop: '40%', textAlign: 'center'}}>Some graphic here</Text>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
