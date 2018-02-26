@@ -24,7 +24,8 @@ export default class App extends React.Component {
     if(this.state.loggedIn) {
       return (
         <View style={styles.container}>
-          <Text style={{marginTop: 200, fontSize: 20, color: BLUE_1}}>Logged In</Text>
+          <Text style={{fontSize: 20, color: BLUE_1}}>Logged In</Text>
+          <TouchableOpacity onPress={() => this.setState({loggedIn: false})}><Text>Back</Text></TouchableOpacity>
         </View>
       )
     }
@@ -32,14 +33,11 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.partialBackground}></View>
-        <StyledText style={{marginTop: '20%', fontSize: 30}}>Welcome to</StyledText>
-        <StyledText style={{fontSize: 30}}>Lunch</StyledText>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <StyledText>Take the guesswork out of catching up over a bite to eat</StyledText>
-        <Text></Text>
-        <Text></Text>
+        <View>
+          <StyledText style={{fontSize: 30}}>Welcome to</StyledText>
+          <StyledText style={{fontSize: 30}}>Lunch</StyledText>
+        </View>
+        <StyledText style={{}}>Take the guesswork out of catching up over a bite to eat</StyledText>
         <Graphic/>
         <Text style={{fontSize: 50, color: BLUE_2}}>
           <Text style={{color: BLUE_1}}>.</Text>
@@ -47,9 +45,6 @@ export default class App extends React.Component {
           <Text>.</Text>
           <Text>.</Text>
         </Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
         <TouchableOpacity style={styles.signUpButton} onPress={this.onSignUpPress.bind(this)}>
           <StyledText style={{color:WHITE_1, marginTop: 10}}>SIGN UP</StyledText>
         </TouchableOpacity>
@@ -67,7 +62,8 @@ const Graphic = () => {
   const style = {
     backgroundColor: BLUE_1,
     height: 100,
-    width: 100
+    width: 100,
+    borderRadius: 3,
   }
 
   return (
@@ -82,7 +78,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    padding: 30
+    padding: 30,
+    justifyContent: 'space-around'
   },
   text: {
     color: BLUE_1,
@@ -99,8 +96,6 @@ const styles = StyleSheet.create({
     height: 40,
     backgroundColor: BLUE_1,
     borderRadius: 3,
-    position: 'absolute',
-    bottom: 23
   }
 });
 
