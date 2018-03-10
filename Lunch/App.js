@@ -26,6 +26,9 @@ export default class App extends React.Component {
     //load fonts
     Font.loadAsync({
       'Roboto-Medium': require('./assets/fonts/Roboto-Medium.ttf'),
+      'Roboto-Regular': require('./assets/fonts/Roboto-Regular.ttf'),
+      'Roboto-Light': require('./assets/fonts/Roboto-Light.ttf'),
+      'Roboto-Bold': require('./assets/fonts/Roboto-Bold.ttf'),
     }).then(() => {
       this.setState({
         fontsLoaded: true
@@ -38,7 +41,7 @@ export default class App extends React.Component {
       this.setState({
         page: 'onboarding'
       });
-    }, 3000);
+    }, 0);
 
   }
 
@@ -75,12 +78,6 @@ export default class App extends React.Component {
   renderOnBoardingPage() {
     return (
       <View style={styles.container}>
-        <View style={styles.partialBackground}></View>
-        <View>
-          <StyledText style={{fontSize: 30}}>Welcome to</StyledText>
-          <StyledText style={{fontSize: 30}}>Lunch</StyledText>
-        </View>
-        <StyledText style={{}}>Take the guesswork out of catching up over a bite to eat</StyledText>
         <Graphic/>
         <Text style={{fontSize: 50, color: BLUE_2}}>
           <Text style={{color: BLUE_1}}>.</Text>
@@ -88,8 +85,13 @@ export default class App extends React.Component {
           <Text>.</Text>
           <Text>.</Text>
         </Text>
+        <View>
+          <StyledText style={{fontSize: 30, fontFamily: 'Roboto-Light'}}>Welcome to</StyledText>
+          <StyledText style={{fontSize: 30, fontFamily: 'Roboto-Light'}}>Lunch</StyledText>
+        </View>
+        <StyledText style={{fontFamily: 'Roboto-Regular'}}>Take the guesswork out of catching up over a bite to eat</StyledText>
         <TouchableOpacity style={styles.signUpButton} onPress={this.onSignUpPress.bind(this)}>
-          <StyledText style={{color:WHITE_1, marginTop: 10}}>SIGN UP</StyledText>
+          <StyledText style={{color:WHITE_1, marginTop: 10, fontFamily: 'Roboto-Bold'}}>SIGN UP</StyledText>
         </TouchableOpacity>
       </View>
     );
@@ -98,20 +100,15 @@ export default class App extends React.Component {
 
   render() {
 
+    if(!this.state.fontsLoaded) {
+      return null;
+    }
+
     if(this.state.page === 'splashScreen') {
       return this.renderSplashScreen();
     } else if(this.state.page === 'onboarding') {
       return this.renderOnBoardingPage();
     }
-
-    // if(this.state.loggedIn) {
-    //   return (
-    //     <View style={styles.container}>
-    //       <Text style={{fontSize: 20, color: BLUE_1}}>Logged In</Text>
-    //       <TouchableOpacity onPress={() => this.setState({loggedIn: false})}><Text>Back</Text></TouchableOpacity>
-    //     </View>
-    //   )
-    // }
   }
 }
 
@@ -122,7 +119,7 @@ const StyledText = (props) => {
 
 const Graphic = () => {
   const style = {
-    backgroundColor: BLUE_1,
+    backgroundColor: '#C8CDD6',
     height: 100,
     width: 100,
     borderRadius: 3,
@@ -157,12 +154,6 @@ const styles = StyleSheet.create({
   text: {
     color: BLUE_1,
     textAlign: 'center'
-  },
-  partialBackground: {
-    backgroundColor: BLUE_3,
-    position: 'absolute',
-    height: '60%',
-    width: '200%',
   },
   signUpButton: {
     width: '100%',
