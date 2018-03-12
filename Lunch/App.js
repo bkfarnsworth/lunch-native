@@ -40,7 +40,7 @@ export default class App extends React.Component {
       this.setState({
         page: 'onboarding'
       });
-    }, 500);
+    }, 2000);
   }
 
   onSignUpPress() {
