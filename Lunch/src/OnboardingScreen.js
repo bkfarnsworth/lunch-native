@@ -12,10 +12,10 @@ export default OnboardingScreen = (props) => {
     <View style={styles.container}>
       <Graphic/>
       <Text style={{fontSize: 50, color: 'black'}}>
-        <Text style={{color: 'black'}}>.</Text>
-        <Text>.</Text>
-        <Text>.</Text>
-        <Text>.</Text>
+        <Text style={{color: '#2A2E43'}}>.</Text>
+        <Text style={{color: '#C8CDD6'}}>.</Text>
+        <Text style={{color: '#C8CDD6'}}>.</Text>
+        <Text style={{color: '#C8CDD6'}}>.</Text>
       </Text>
       <View>
         <StyledText style={{fontSize: 30, fontFamily: 'Roboto-Light'}}>Welcome to</StyledText>
@@ -23,7 +23,7 @@ export default OnboardingScreen = (props) => {
       </View>
       <StyledText style={{fontFamily: 'Roboto-Regular'}}>Take the guesswork out of catching up over a bite to eat</StyledText>
       <TouchableOpacity style={styles.signUpButton} onPress={props.onSignUpPress}>
-        <StyledText style={{color:'black', marginTop: 10, fontFamily: 'Roboto-Bold'}}>SIGN UP</StyledText>
+        <StyledText style={{color:'#FFFFFF', marginTop: 10, fontFamily: 'Roboto-Bold'}}>Next</StyledText>
       </TouchableOpacity>
     </View>
    );
@@ -35,27 +35,27 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     padding: 30,
-    justifyContent: 'space-around'
+    justifyContent: 'space-around',
+    marginTop: 30
   },
   signUpButton: {
     width: '100%',
     height: 40,
-    backgroundColor: 'purple',
-    borderRadius: 3,
+    backgroundColor: '#F23838',
+    borderRadius: 12,
   }
 });
 
 const Graphic = () => {
   const style = {
-    backgroundColor: '#C8CDD6',
-    height: 100,
-    width: 100,
-    borderRadius: 3,
+    backgroundColor: '#F5F5F5',
+    height: 200,
+    width: 200,
   }
 
   return (
     <View style={style}>
-      <Text style={{color: 'white', fontSize: 10, paddingTop: '40%', textAlign: 'center'}}>Some graphic here</Text>
+      <Text style={{color: 'white', fontSize: 10, paddingTop: '40%', textAlign: 'center'}}></Text>
     </View>
   )
 }

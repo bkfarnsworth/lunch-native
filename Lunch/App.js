@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
 import SplashScreen from './src/SplashScreen';
 import OnboardingScreen from './src/OnboardingScreen';
+import LoginScreen from './src/LoginScreen';
 
 export default class App extends React.Component {
 
@@ -38,7 +39,13 @@ export default class App extends React.Component {
       this.setState({
         page: 'onboarding'
       });
-    }, 3000);
+    }, 500);
+  }
+
+  onSignUpPress() {
+    this.setState({
+      page: 'loginScreen'
+    })
   }
 
 
@@ -51,7 +58,9 @@ export default class App extends React.Component {
     if(this.state.page === 'splashScreen') {
       return <SplashScreen/>
     } else if(this.state.page === 'onboarding') {
-      return <OnboardingScreen/>
+      return <OnboardingScreen onSignUpPress={this.onSignUpPress.bind(this)}/>
+    } else if(this.state.page === 'loginScreen') {
+      return <LoginScreen/>
     }
 
   }
