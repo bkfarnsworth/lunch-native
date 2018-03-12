@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Font } from 'expo';
+import SplashScreen from './src/SplashScreen';
 
 
 
@@ -41,39 +42,13 @@ export default class App extends React.Component {
       this.setState({
         page: 'onboarding'
       });
-    }, 0);
+    }, 3000);
 
   }
 
   onSignUpPress() {
     this.setState({loggedIn: true});
   }
-
-  renderSplashScreen() {
-
-    const iconStyle = {
-      backgroundColor: 'white',
-      borderRadius: 50,
-      height: 50,
-      width: 50,
-    }
-
-    const titleStyle = {
-      fontSize: 60,
-      color: '#F23838',
-      fontFamily: 'Roboto-Medium'
-    }
-
-    return (
-      <View style={spashScreenStyles.container}>
-        <View style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-          <View style={iconStyle}></View>
-          {this.state.fontsLoaded ? <Text style={titleStyle}>Lunch</Text> : null}
-        </View>
-      </View>
-    );
-  }
-
 
   renderOnBoardingPage() {
     return (
@@ -101,11 +76,11 @@ export default class App extends React.Component {
   render() {
 
     if(!this.state.fontsLoaded) {
-      return null;
+      return <Expo.AppLoading/>;
     }
 
     if(this.state.page === 'splashScreen') {
-      return this.renderSplashScreen();
+      return <SplashScreen/>
     } else if(this.state.page === 'onboarding') {
       return this.renderOnBoardingPage();
     }
@@ -132,16 +107,7 @@ const Graphic = () => {
   )
 }
 
-const spashScreenStyles = StyleSheet.create({
-  container: {
-    backgroundColor: '#2A2E43',
-    height: '100%',
-    width: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-});
+
 
 const styles = StyleSheet.create({
   container: {
