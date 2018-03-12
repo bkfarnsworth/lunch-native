@@ -4,6 +4,7 @@ import { Font } from 'expo';
 import SplashScreen from './src/SplashScreen';
 import OnboardingScreen from './src/OnboardingScreen';
 import LoginScreen from './src/LoginScreen';
+import HomeScreen from './src/HomeScreen';
 
 export default class App extends React.Component {
 
@@ -48,6 +49,12 @@ export default class App extends React.Component {
     })
   }
 
+  onLoginPress() {
+    this.setState({
+      page: 'homeScreen'
+    }) 
+  }
+
 
   render() {
 
@@ -60,7 +67,9 @@ export default class App extends React.Component {
     } else if(this.state.page === 'onboarding') {
       return <OnboardingScreen onSignUpPress={this.onSignUpPress.bind(this)}/>
     } else if(this.state.page === 'loginScreen') {
-      return <LoginScreen/>
+      return <LoginScreen onLoginPress={this.onLoginPress.bind(this)}/>
+    } else if(this.state.page === 'homeScreen') {
+      return <HomeScreen/>
     }
 
   }

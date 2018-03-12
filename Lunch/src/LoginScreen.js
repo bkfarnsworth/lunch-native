@@ -10,9 +10,9 @@ const LoginScreen = (props) => {
 
    return (
     <View style={{}}>
-      <Text style={{fontSize: 50, color: 'black'}}>
-        Login
-      </Text>
+      <TouchableOpacity style={{backgroundColor: 'black'}} onPress={props.onLoginPress}>
+        <StyledText style={{color:'#FFFFFF', marginTop: 10, fontFamily: 'Roboto-Bold'}}>Login</StyledText>
+      </TouchableOpacity>
     </View>
    );
 }
