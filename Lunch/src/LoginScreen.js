@@ -16,13 +16,13 @@ const LoginScreen = (props) => {
 
    return (
     <View style={styles.container}>
-      <StyledText style={{color:'black', fontFamily: 'Roboto-Light'}}>Login</StyledText>
-      <LoginInput/>
-      <LoginInput/>
-      <LoginInput/>
+      <StyledText style={{color:'#2A2E43', fontFamily: 'Roboto-Light', fontSize: 40}}>Sign Up</StyledText>
+      <LoginInput placeholder="Enter your name"/>
+      <LoginInput placeholder="Enter your email"/>
+      <LoginInput placeholder="Create password"/>
       <TextButton text={'Continue'}/>
       
-      <StyledText style={{fontSize: 30, fontFamily: 'Roboto-Light'}}>
+      <StyledText style={{fontSize: 12, fontFamily: 'Roboto-Light', color: '#454F63'}}>
         Or Sign up Using one of these
       </StyledText>
       <View style={{display: 'flex', flexDirection: 'row'}}>
@@ -30,7 +30,7 @@ const LoginScreen = (props) => {
         <AuthBubble/>
         <AuthBubble/>
       </View>
-      <StyledText style={{fontSize: 30, fontFamily: 'Roboto-Light'}}>
+      <StyledText style={{fontSize: 12, fontFamily: 'Roboto-Light', color: '#454F63'}}>
         Already have an account
       </StyledText>
       <TextButton text={'Login'}/>
@@ -56,26 +56,35 @@ const TextButton = (props) => {
     text = 'hi'
   } = props;
 
+  const styles = {
+    width: '100%',
+    borderRadius: 12,
+  }
 
   return (
-    <TouchableOpacity style={{backgroundColor: 'black'}} onPress={() => {}}>
+    <TouchableOpacity style={{backgroundColor: 'black', ...styles}} onPress={() => {}}>
       <StyledText style={{color:'#FFFFFF', marginTop: 10, fontFamily: 'Roboto-Bold'}}>
-        {props.text}
+        {text}
       </StyledText>
     </TouchableOpacity>
   )
 }
 
-const LoginInput = () => {
+const LoginInput = (props = {}) => {
+
+  let {
+    placeholder = 'placeholder'
+  } = props;
+
   const style = {
     height: 40, 
     borderColor: 'gray', 
     borderWidth: 1, 
-    width: 100,
+    width: '100%',
     height: 50
   }
 
-  return <TextInput style={style} onChangeText={(text) => this.setState({text})} value={'this.state.text'} />
+  return <TextInput style={style} onChangeText={(text) => this.setState({text})} value={placeholder} />
 }
 
 const styles = StyleSheet.create({
