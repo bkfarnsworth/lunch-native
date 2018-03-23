@@ -6,6 +6,9 @@ import OnboardingScreen from './src/OnboardingScreen';
 import LoginScreen from './src/LoginScreen';
 import HomeScreen from './src/HomeScreen';
 
+const DEBUG_MODE = true;
+const DEBUG_PAGE = 'loginScreen'
+
 export default class App extends React.Component {
 
   constructor(...args) {
@@ -13,7 +16,7 @@ export default class App extends React.Component {
     this.state = {
       loggedIn: false,
       fontsLoaded: false,
-      page: 'splashScreen'
+      page: DEBUG_MODE ? DEBUG_PAGE : 'splashScreen'
     };
   }
 
@@ -36,11 +39,13 @@ export default class App extends React.Component {
     this.loadFonts(); 
 
     //set fake timeout for splash screen
-    setTimeout(() => {
-      this.setState({
-        page: 'onboarding'
-      });
-    }, 2000);
+    if(!DEBUG_MODE || DEBUG_PAGE === 'splashScreen') {
+      setTimeout(() => {
+        this.setState({
+          page: 'onboarding'
+        });
+      }, 2000);
+    }
   }
 
   onSignUpPress() {
