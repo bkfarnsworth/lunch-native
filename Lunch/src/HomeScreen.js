@@ -5,20 +5,40 @@ import StyledText from './StyledText';
 const styles = StyleSheet.create({
 	container: {
 		display: 'flex',
-		backgroundColor: '#fff',
+		backgroundColor: '#F5F5F5',
 		alignItems: 'center',
-		padding: 30,
+		padding: 16,
 		justifyContent: 'space-around',
 		marginTop: 30
 	},
 	searchBar: {
 		height: 40, 
-		borderColor: 'gray', 
+		borderColor: '#C8CDD6', 
 		borderWidth: 1, 
 		width: '100%',
-		height: 50
+		height: 40,
+		marginTop: 15,
+		marginBottom: 15,
+		color: '#78849E',
+		paddingTop: 2,
+		paddingBottom: 2,
+		paddingLeft: 5,
+		paddingRight: 5
 	}
 });
+
+const ListItem = (props) => {
+
+	const styles = {
+		height: 30,
+		width: '100%',
+		backgroundColor: 'white',
+		marginTop: 7,
+		marginBottom: 7
+	}
+
+	return <View style={styles}><Text>List Item</Text></View>;
+}
 
 const HomeScreen = (props) => {
 
@@ -30,11 +50,11 @@ const HomeScreen = (props) => {
 				<View><Text>Avatar</Text></View>
 			</View>
 			<Image style={{width: '130%', height: '50%'}} source={require('./../assets/Map.png')} />
-			<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({text})} value={'placeholder'} />
-			<View><Text>List Item</Text></View>
-			<View><Text>List Item</Text></View>
-			<View><Text>List Item</Text></View>
-			<View><Text>List Item</Text></View>
+			<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({text})} value={'Search'} />
+			<ListItem/>
+			<ListItem/>
+			<ListItem/>
+			<ListItem/>
 			<Text>Button</Text>
 		</View>
 	);
