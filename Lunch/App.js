@@ -7,7 +7,7 @@ import LoginScreen from './src/LoginScreen';
 import HomeScreen from './src/HomeScreen';
 
 const DEBUG_MODE = true;
-const DEBUG_PAGE = 'loginScreen'
+const DEBUG_PAGE = 'homeScreen'
 
 export default class App extends React.Component {
 

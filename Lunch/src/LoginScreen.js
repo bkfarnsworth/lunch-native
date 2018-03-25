@@ -20,7 +20,7 @@ const LoginScreen = (props) => {
       <LoginInput placeholder="Enter your name"/>
       <LoginInput placeholder="Enter your email"/>
       <LoginInput placeholder="Create password"/>
-      <TextButton text={'Continue'}/>
+      <TextButton text={'Continue'} onPress={props.onLoginPress}/>
       
       <StyledText style={{fontSize: 12, fontFamily: 'Roboto-Light', color: '#454F63'}}>
         Or Sign up Using one of these
@@ -33,7 +33,7 @@ const LoginScreen = (props) => {
       <StyledText style={{fontSize: 12, fontFamily: 'Roboto-Light', color: '#454F63'}}>
         Already have an account
       </StyledText>
-      <TextButton text={'Login'}/>
+      <TextButton text={'Login'} onPress={props.onLoginPress}/>
     </View>
    );
 }
@@ -53,7 +53,8 @@ const AuthBubble = () => {
 const TextButton = (props) => {
 
   let {
-    text = 'hi'
+    text = 'hi',
+    onPress = () => {}
   } = props;
 
   const styles = {
@@ -62,7 +63,7 @@ const TextButton = (props) => {
   }
 
   return (
-    <TouchableOpacity style={{backgroundColor: 'black', ...styles}} onPress={() => {}}>
+    <TouchableOpacity style={{backgroundColor: 'black', ...styles}} onPress={onPress}>
       <StyledText style={{color:'#FFFFFF', marginTop: 10, fontFamily: 'Roboto-Bold'}}>
         {text}
       </StyledText>
