@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
 		paddingTop: 2,
 		paddingBottom: 2,
 		paddingLeft: 5,
-		paddingRight: 5
+		paddingRight: 5,
+		backgroundColor: 'white'
 	}
 });
 
@@ -34,10 +35,19 @@ const ListItem = (props) => {
 		width: '100%',
 		backgroundColor: 'white',
 		marginTop: 7,
-		marginBottom: 7
+		marginBottom: 7,
+		display: 'flex',
+		flexDirection: 'row',
+		justifyContent: 'space-between'
 	}
 
-	return <View style={styles}><Text>List Item</Text></View>;
+	return (
+		<View style={styles}>
+			<Text>Avatar</Text>
+			<Text>List Item</Text>
+			<Text>Checkbox</Text>
+		</View>
+	);
 }
 
 const HomeScreen = (props) => {
@@ -51,10 +61,11 @@ const HomeScreen = (props) => {
 			</View>
 			<Image style={{width: '130%', height: '50%'}} source={require('./../assets/Map.png')} />
 			<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({text})} value={'Search'} />
-			<ListItem/>
-			<ListItem/>
-			<ListItem/>
-			<ListItem/>
+			<View style={{width: '100%', height: 100}}>
+				<ListItem/>
+				<ListItem/>
+				<ListItem/>
+			</View>
 			<Text>Button</Text>
 		</View>
 	);
