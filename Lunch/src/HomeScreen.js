@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, TextInput, FlatList } from 'react-native';
 import StyledText from './StyledText';
 
 const styles = StyleSheet.create({
@@ -25,8 +25,23 @@ const styles = StyleSheet.create({
 		paddingLeft: 5,
 		paddingRight: 5,
 		backgroundColor: 'white'
+	},
+	flatList: {
+		width: '100%'
 	}
 });
+
+const Avatar = () => {
+
+	const style = {
+		backgroundColor: 'blue',
+		borderRadius: 50,
+		height: 25,
+		width: 25,
+	}
+
+	return <View style={style}></View>;
+}
 
 const ListItem = (props) => {
 
@@ -38,19 +53,33 @@ const ListItem = (props) => {
 		marginBottom: 7,
 		display: 'flex',
 		flexDirection: 'row',
-		justifyContent: 'space-between'
+		justifyContent: 'space-between',
+		alignItems: 'center'
+	}
+
+	const nameStyles = {
+		flexGrow: 1,
+		marginLeft: 10,
+		marginRight: 10
 	}
 
 	return (
 		<View style={styles}>
-			<Text>Avatar</Text>
-			<Text>List Item</Text>
-			<Text>Checkbox</Text>
+			<Avatar/>
+			<Text style={nameStyles}>{props.item.name}</Text>
+			<Text>{String(props.item.checked)}</Text>
 		</View>
 	);
 }
 
 const HomeScreen = (props) => {
+
+	const listItems = [
+		{avatar: 'brian.png', name: 'Brian', checked: true, key: 'brian'},
+		{avatar: 'grace.png', name: 'Grace', checked: true, key: 'grace'},
+		{avatar: 'rose.png', name: 'Rose', checked: true, key: 'rose'},
+	];
+
 
 	return (
 		<View style={styles.container}>
@@ -61,11 +90,7 @@ const HomeScreen = (props) => {
 			</View>
 			<Image style={{width: '130%', height: '50%'}} source={require('./../assets/Map.png')} />
 			<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({text})} value={'Search'} />
-			<View style={{width: '100%', height: 100}}>
-				<ListItem/>
-				<ListItem/>
-				<ListItem/>
-			</View>
+			<FlatList style={styles.flatList} data={listItems} renderItem={({item}) => <ListItem item={item}/>} />
 			<Text>Button</Text>
 		</View>
 	);
