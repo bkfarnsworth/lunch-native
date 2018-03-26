@@ -72,28 +72,39 @@ const ListItem = (props) => {
 	);
 }
 
-const HomeScreen = (props) => {
+class HomeScreen extends React.Component {
 
-	const listItems = [
-		{avatar: 'brian.png', name: 'Brian', checked: true, key: 'brian'},
-		{avatar: 'grace.png', name: 'Grace', checked: true, key: 'grace'},
-		{avatar: 'rose.png', name: 'Rose', checked: true, key: 'rose'},
-	];
+	constructor(...args) {
+		super(...args);
+		this.state = {
+			searchText: ''
+		}
+	}
 
+	render() {
 
-	return (
-		<View style={styles.container}>
-			<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-				<View><Text>Today</Text></View>
-				<View><Text>Available 11-2:30</Text></View>
-				<View><Text>Avatar</Text></View>
+		const listItems = [
+			{avatar: 'brian.png', name: 'Brian', checked: true, key: 'brian'},
+			{avatar: 'grace.png', name: 'Grace', checked: true, key: 'grace'},
+			{avatar: 'rose.png', name: 'Rose', checked: true, key: 'rose'},
+		];
+
+		const filteredItems = listItems.filter(item => item.name.toLowerCase().includes(this.state.searchText.toLowerCase()));
+
+		return (
+			<View style={styles.container}>
+				<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
+					<View><Text>Today</Text></View>
+					<View><Text>Available 11-2:30</Text></View>
+					<View><Text>Avatar</Text></View>
+				</View>
+				<Image style={{width: '130%', height: '50%'}} source={require('./../assets/Map.png')} />
+				<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({searchText:text})} value={this.state.searchText} placeholder={'Search'} />
+				<FlatList style={styles.flatList} data={filteredItems} renderItem={({item}) => <ListItem item={item}/>} />
+				<Text>Button</Text>
 			</View>
-			<Image style={{width: '130%', height: '50%'}} source={require('./../assets/Map.png')} />
-			<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({text})} value={'Search'} />
-			<FlatList style={styles.flatList} data={listItems} renderItem={({item}) => <ListItem item={item}/>} />
-			<Text>Button</Text>
-		</View>
-	);
+		);
+	}
 }
 
 export default HomeScreen;
