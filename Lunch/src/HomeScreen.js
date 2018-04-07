@@ -31,16 +31,19 @@ const styles = StyleSheet.create({
 	}
 });
 
-const Avatar = () => {
+const Avatar = (props) => {
 
 	const style = {
-		backgroundColor: 'blue',
-		borderRadius: 50,
-		height: 25,
-		width: 25,
+		height: 40,
+		width: 40,
 	}
 
-	return <View style={style}></View>;
+
+	return (
+		<View style={style}>
+			<Image style={{width: '100%', height: '100%'}} source={props.image} />
+		</View>
+	);
 }
 
 const ListItem = (props) => {
@@ -65,7 +68,7 @@ const ListItem = (props) => {
 
 	return (
 		<View style={styles}>
-			<Avatar/>
+			<Avatar image={require('./../assets/IMG_1710.png')}/>
 			<Text style={nameStyles}>{props.item.name}</Text>
 			<Text>{String(props.item.checked)}</Text>
 		</View>
@@ -91,12 +94,20 @@ class HomeScreen extends React.Component {
 
 		const filteredItems = listItems.filter(item => item.name.toLowerCase().includes(this.state.searchText.toLowerCase()));
 
+
+
 		return (
 			<View style={styles.container}>
-				<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', width: '100%'}}>
-					<View><Text>Today</Text></View>
-					<View><Text>Available 11-2:30</Text></View>
-					<View><Text>Avatar</Text></View>
+				<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', width: '100%', marginBottom: 10}}>
+					<View style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'}}>
+						<Text style={{fontFamily: 'Roboto-Light', fontSize: 28, marginRight: 7, color: '#2A2E43'}}>Today</Text>
+						<Text style={{fontFamily: 'Roboto-Light', fontSize: 20, color: '#C8CDD6'}}>▾</Text>
+					</View>
+					<View style={{flexGrow: 1, marginRight: 10}}>
+						<Text style={{textAlign: 'right', color: '#F23838', fontSize: 10}}>Available</Text>
+						<Text style={{textAlign: 'right', color: '#F23838', fontSize: 10}}>11-2:30</Text>
+					</View>
+					<Avatar image={require('./../assets/IMG_1710.png')}/>
 				</View>
 				<Image style={{width: '130%', height: '50%'}} source={require('./../assets/Map.png')} />
 				<TextInput style={styles.searchBar} onChangeText={(text) => this.setState({searchText:text})} value={this.state.searchText} placeholder={'Search'} />
